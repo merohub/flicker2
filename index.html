@@ -1,0 +1,175 @@
+
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>Panas</title> 
+	<meta charset="utf-8">  
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  
+
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.css">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
+<link rel="stylesheet" href="css/custom.css" />
+
+<!--SPECIAL ITEM 2 -->
+<script type="text/javascript">
+	function home_json(){
+   
+    var hr = new XMLHttpRequest();
+   
+    var url = "http://hitlarrajbhandari.com/todays_special.json";
+    hr.open("GET", url, true);
+    // Set content type header information for sending url encoded variables in the request
+    hr.setRequestHeader("Content-type", "application/json", true);
+    // Access the onreadystatechange event for the XMLHttpRequest object
+    hr.onreadystatechange = function() {
+	    if(hr.readyState == 4 && hr.status == 200) {
+		    var data = JSON.parse(hr.responseText);
+			var resu = document.getElementById("resu");
+	   		//results.innerHTML = data.news2.head +" <br/>Full report: " +data.news2.detail;
+	    resu.innerHTML = "";
+	    for(var obj in data){
+	    		resu.innerHTML += "<strong>"+"<ul style='list-style-type:none' ><li>"+data[obj].home+"</strong>" +"</li>"+"</ul>";
+
+	    }
+	    }
+    }
+    // Send the data to PHP now... and wait for response to update the status div
+    hr.send(null); // Actually execute the request
+    document.getElementById("resu").innerHTML = "requesting...";
+}
+	</script>
+
+	<!--SPECIAL ITEM 2 -->
+<script type="text/javascript">
+	function home2_json(){
+   
+    var hr = new XMLHttpRequest();
+   
+    var url = "http://hitlarrajbhandari.com/todays_special2.json";
+    hr.open("GET", url, true);
+    // Set content type header information for sending url encoded variables in the request
+    hr.setRequestHeader("Content-type", "application/json", true);
+    // Access the onreadystatechange event for the XMLHttpRequest object
+    hr.onreadystatechange = function() {
+	    if(hr.readyState == 4 && hr.status == 200) {
+		    var data = JSON.parse(hr.responseText);
+			var resu2 = document.getElementById("resu2");
+	   		//results.innerHTML = data.news2.head +" <br/>Full report: " +data.news2.detail;
+	    resu2.innerHTML = "";
+	    for(var obj in data){
+	    		resu2.innerHTML += "<strong>"+"<ul style='list-style-type:none' ><li>"+data[obj].home2+"</strong>" +"</li>"+"</ul>";
+	    		
+	    }
+	    }
+    }
+    // Send the data to PHP now... and wait for response to update the status div
+    hr.send(null); // Actually execute the request
+    document.getElementById("resu2").innerHTML = "requesting...";
+}
+	</script>
+</head> 
+
+<body>
+<div data-role="page" id="index" data-fullscreen="true">
+	<header data-role="header">
+		<div class="logo"><img src="images/logo.png" alt="logo"></div>
+	</header>
+	<div id="texttop">
+
+    <center>"Panas is a Nepalese Restaurant serving
+            authentic Nepalese cuisine." </center> 
+   
+</div>
+	<div data-role="content">
+		<!--<p>
+<img src="images/frontimg.jpg" class="fullscreen" />
+		</p>-->
+	
+	
+<ul  data-role="listview" data-inset="true">
+<li><img src="http://hitlarrajbhandari.com/images/special01.jpg" class="ui-li-thumb">
+<div id="resu" >
+
+
+  <script type="text/javascript">home_json();</script>
+</div></li>
+<li><img src="http://hitlarrajbhandari.com/images/special02.jpg" class="ui-li-thumb">
+<div id="resu2" >
+
+
+  <script type="text/javascript">home2_json();</script>
+</div></li>
+</ul>
+
+
+
+
+     
+
+
+		<p><a href="#about" data-role="button" data-theme="c" data-icon="star">About us</a></p>
+		<p><a href="#menu" data-role="button" data-theme="c" data-icon="grid">Menu</a></p>
+		<p><a href="#contact" data-role="button" data-theme="c" data-icon="info">Contact</a></p>
+	</div>
+	<!--
+	<footer data-role="footer">
+		<h2>&copy; footer here.</h2>
+	</footer>
+-->
+</div>
+
+<div data-role="page" id="about">
+	<header data-role="header">
+		<div class="logo"><img src="images/logo.png" alt="logo"></div>
+	</header>
+	
+	<div data-role="content">
+		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+		
+		<p><a data-rel="back" href="#index" class="goback" style="color:#fff; text-decoration:none">BACK</a></p>
+	</div>
+	
+	<footer data-role="footer" class="ui-body-b">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#index" data-direction="reverse">App Homescreen!</a></li>
+				<li><a href="http://www.google.com/" data-rel="external">Google Me</a></li>
+				<li><a href="http://www.hongkiat.com/" data-rel="external">Hongkiat Blog</a></li>
+			</ul>
+		</div>
+	</footer>
+
+</div>
+<!--about ends-->
+
+<div data-role="page" id="menu" data-add-back-btn="true">
+	<header data-role="header">
+		<a href="index.html" data-icon="gear" data-theme="b" class="ui-btn-right">Settings</a>
+		<h1>menu</h1>
+	</header>
+	
+	<div data-role="content">
+		<p>just some extra content as well.</p>
+		
+		<p>I mean, you can <a data-rel="back" href="#index">go back</a> at any time.</p>
+	</div>
+	
+	<!--
+	<footer data-role="footer" class="ui-body-b">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#index" data-direction="reverse">App Homescreen!</a></li>
+				<li><a href="http://www.google.com/" data-rel="external">Google Me</a></li>
+				<li><a href="http://www.hongkiat.com/" data-rel="external">Hongkiat Blog</a></li>
+			</ul>
+		</div>
+	</footer>
+	-->
+</div>
+
+
+
+</body>
+</html>
